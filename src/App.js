@@ -3,6 +3,8 @@ import React from 'react'
 import './App.css'
 import Book from './Book/Book.js';
 
+import SearchIcon from '@material-ui/icons/Search'; 
+
 class BooksApp extends React.Component {
 
   state = {
@@ -182,6 +184,7 @@ class BooksApp extends React.Component {
             </div>
             <div className="open-search">
               <button onClick={() => this.setState({ showSearchPage: true })}>Add a book</button>
+              <SearchIcon />
             </div>
           </div>
         )}
