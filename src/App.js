@@ -1,8 +1,9 @@
 import React from 'react'
 // import * as BooksAPI from './BooksAPI'
-import './App.css'
 import Book from './Book/Book.js';
+import {Link} from 'react-router-dom';
 
+import './App.scss'
 import SearchIcon from '@material-ui/icons/Search'; 
 
 class BooksApp extends React.Component {
@@ -183,8 +184,8 @@ class BooksApp extends React.Component {
                 </div>
             </div>
             <div className="open-search">
-              <button onClick={() => this.setState({ showSearchPage: true })}>Add a book</button>
-              <SearchIcon />
+              <Link ><button onClick={() => this.setState({ showSearchPage: true })}> <SearchIcon style={{color:'white'}}/></button></Link>
+  
             </div>
           </div>
         )}
