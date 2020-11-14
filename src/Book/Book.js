@@ -2,7 +2,8 @@ import React from 'react';
 import './Book.scss';
 
 function Book(props) {
-    const {bookTitle, bookAuthor, category, imageUrl} = props; 
+
+    const {title, author, shelf, imageUrl} = props; 
     return (
         <>
             <li>
@@ -12,15 +13,15 @@ function Book(props) {
                     <div className="book-shelf-changer">
                         <select>
                         <option value="move" disabled>Move to...</option>
-                        <option value="currentlyReading">{category}</option>
+                        <option value="currentlyReading">{shelf}</option>
                         <option value="wantToRead">Want to Read</option>
                         <option value="read">Read</option>
                         <option value="none">None</option>
                         </select>
                     </div>
                     </div>
-                    <div className="book-title">{bookTitle}</div>
-                    <div className="book-authors">{bookAuthor}</div>
+                    <div className="book-title">{title}</div>
+                    <div className="book-authors">{author}</div>
                 </div>
             </li>
         </>

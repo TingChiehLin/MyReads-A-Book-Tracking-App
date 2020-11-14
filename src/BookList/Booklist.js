@@ -6,7 +6,6 @@ import './BookList.scss';
 
 function Booklist(props) {
     const {currentBooks} = props;
-
     return (
         <>
           <div className="list-books">
