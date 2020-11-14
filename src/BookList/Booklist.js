@@ -1,6 +1,4 @@
 import React from 'react'
-import Bookshelf from '../Book/Book';
-
 import BookShelf from '../BookShelf/BookShelf';
 import './BookList.scss';
 
@@ -13,7 +11,18 @@ function Booklist(props) {
               <h1>Jay Lin's Library</h1>
             </div>
             <div className="list-books-content">
-                <BookShelf currentBooks={currentBooks} />
+                <BookShelf 
+                    shelfTitle="Currently Reading"
+                    books={currentBooks.filter((book) => book.shelf === "currentlyReading")}
+                />
+                <BookShelf 
+                    shelfTitle="Want To Read"
+                    books={currentBooks.filter((book) => book.shelf === "wantToRead")}
+                />
+                <BookShelf 
+                    shelfTitle="Read"
+                    books={currentBooks.filter((book) => book.shelf === "read")}
+                />
             </div>
           </div>  
         </>

@@ -4,23 +4,21 @@ import './BookShelf.scss';
 
 function Bookshelf(props) {
 
-    const {currentBooks} = props;
-    const book = currentBooks.map((book, i) => {
-        return (
-            <Book
-                key={i}
-                title = {book[i].title}
-                author = {book[i].author}
-                shelf ={book[i].shelf}
-                imageUrl = {book[i].imageLinks}
-            />
-        );
+    const {books, shelfTitle} = props;
+    const book = books.map((book, i) => {
+        <Book
+            key={i}
+            title = {book[i].title}
+            author = {book[i].author}
+            shelf ={book[i].shelf}
+            imageUrl = {book[i].imageLinks}
+        />
     })
 
     return (
         <>
             <div className="bookshelf">
-                <h2 className="bookshelf-title">{currentBooks.title}</h2>
+                <h2 className="bookshelf-title">{shelfTitle}</h2>
                 <div className="bookshelf-books">
                     <ol className="books-grid" id="book-container">
                         {book}
