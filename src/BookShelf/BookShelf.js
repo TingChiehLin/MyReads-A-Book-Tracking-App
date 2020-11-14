@@ -11,7 +11,7 @@ function Bookshelf(props) {
             title = {book[i].title}
             author = {book[i].author}
             shelf ={book[i].shelf}
-            imageUrl = {book[i].imageLinks}
+            imageUrl = {book[i].imageLinks.thumbnail}
         />
     })
 
