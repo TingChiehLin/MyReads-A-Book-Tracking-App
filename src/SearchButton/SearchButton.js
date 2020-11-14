@@ -3,7 +3,10 @@ import {Link} from 'react-router-dom';
 import './SearchButton.scss';
 import SearchIcon from '@material-ui/icons/Search'; 
 
-function SearchBar() {
+function SearchBar(props) {
+
+    const {currentBooks} = props;
+    
     return (
         <>
           <div className="open-search">

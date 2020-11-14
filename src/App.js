@@ -10,7 +10,6 @@ import SearchButton from './SearchButton/SearchButton';
 class BooksApp extends React.Component {
 
   state = {
-    category: 'Currently Reading',
     // showSearchPage: false
     books: []
   }
@@ -22,20 +21,26 @@ class BooksApp extends React.Component {
   fetchData() {
     BooksAPI.getAll()
       .then((data) => {
+        console.log('date', data);
         this.setState(()=> {
-          return data
-        })
-      })
-  }
+          return {books:data}
+        });
+      });
+  };
+
+  updateSheief = (book, shelf) => {
+    BooksAPI.update(book, shelf)
+      .then((res) => {
+        console.log('book', book, 'shelf', shelf);
+
+      });
+  };
 
   render() {
     return (
       <div className="app">
-        {/* {this.state.showSearchPage ? <Search/> : ( */}
-          <BookList />
-          <SearchButton />
-        {/* )} */}
-        {console.log(this.fetchData())}
+          <BookList currentBooks = {this.state.books}/>
+          <SearchButton currentBooks = {this.state.books}/>
       </div>
     )
   }

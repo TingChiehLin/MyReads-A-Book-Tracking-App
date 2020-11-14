@@ -5,6 +5,7 @@ import BookShelf from '../BookShelf/BookShelf';
 import './BookList.scss';
 
 function Booklist(props) {
+    const {currentBooks} = props;
 
     return (
         <>
@@ -13,7 +14,7 @@ function Booklist(props) {
               <h1>Jay Lin's Library</h1>
             </div>
             <div className="list-books-content">
-                <BookShelf categoryTitle="Curry Reading"/>
+                <BookShelf currentBooks={currentBooks} />
             </div>
           </div>  
         </>

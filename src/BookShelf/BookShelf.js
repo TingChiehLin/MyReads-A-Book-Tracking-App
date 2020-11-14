@@ -4,11 +4,13 @@ import './BookShelf.scss';
 
 function Bookshelf(props) {
 
-    const {categoryTitle} = props;
+    const {currentBooks} = props;
+
     return (
         <>
+            {console.log(currentBooks.title)}
             <div className="bookshelf">
-                <h2 className="bookshelf-title">{categoryTitle}</h2>
+                <h2 className="bookshelf-title">{currentBooks.title}</h2>
                 <div className="bookshelf-books">
                     <ol className="books-grid" id="book-container">
                         <Book 
