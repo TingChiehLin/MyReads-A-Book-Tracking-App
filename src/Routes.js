@@ -3,13 +3,13 @@ import {Route} from 'react-router-dom';
 
 import Layout from './Layout';
 import App from './App';
-import Search from './Search/Search';
+import SearchPage from './SearchPage/SearchPage';
 
 function Routes(props) {
     return (
         <Layout>
             <Route path="/" exact component={App}/>
-            <Route path="/search" exact componet={Search}/>
+            <Route path="/search" exact component={SearchPage}/>
         </Layout>
     )
 }

@@ -1,11 +1,13 @@
 import React from 'react'
+import {Link} from 'react-router-dom';
+import './SearchPage.scss';
 
-function Search() {
+function SearchPage() {
     return (
         <div>
             <div className="search-books">
                 <div className="search-books-bar">
-                <button className="close-search" onClick={() => this.setState({ showSearchPage: false })}>Close</button>
+                <Link to="./"><button className="close-search">Close</button></Link>
                 <div className="search-books-input-wrapper">
                     <input type="text" placeholder="Search by title or author"/>
                 </div>
@@ -18,4 +20,6 @@ function Search() {
     )
 }
 
-export default Search
+export default SearchPage
+
+//onClick={() => this.setState({ showSearchPage: false })}

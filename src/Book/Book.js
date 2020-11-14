@@ -1,7 +1,7 @@
 import React from 'react';
 import './Book.scss';
 
-function Bookshelf(props) {
+function Book(props) {
     const {bookTitle, bookAuthor, category, imageUrl} = props; 
     return (
         <>
@@ -27,7 +27,7 @@ function Bookshelf(props) {
     )
 }
 
-export default Bookshelf
+export default Book
 
 
 // <div className="bookshelf">
