@@ -39,7 +39,7 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
-          <BookList currentBooks = {this.state.books}/>
+          <BookList currentBooks = {this.state.books} updateSheief={this.updateSheief}/>
           <SearchButton currentBooks = {this.state.books} updateSheief={this.updateSheief}/>
       </div>
     )

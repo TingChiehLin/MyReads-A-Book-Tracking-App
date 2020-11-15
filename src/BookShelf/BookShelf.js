@@ -4,15 +4,16 @@ import './BookShelf.scss';
 
 function Bookshelf(props) {
 
-    const {books, shelfTitle, onShelfChange} = props;
+    const {books, shelfTitle, updateSheief} = props;
     const book = books.map((book) => (
         <Book
-            key={book.id}
+            key = {book.id}
+            id = {book.id} 
             title = {book.title}
             author = {book.authors}
             shelf ={book.shelf}
             imageUrl = {book.imageLinks.thumbnail}
-            onShelfChange = {onShelfChange}
+            updateSheief = {updateSheief}
         />
     ));
     return (
