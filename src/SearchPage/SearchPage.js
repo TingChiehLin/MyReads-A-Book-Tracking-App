@@ -2,7 +2,8 @@ import React from 'react'
 import {Link} from 'react-router-dom';
 import './SearchPage.scss';
 
-function SearchPage() {
+const SearchPage = () => {
+    
     return (
         <div>
             <div className="search-books">

@@ -6,10 +6,9 @@ import './BookList.scss';
 function Booklist(props) {
     const {currentBooks} = props;
     const [shelfState, setShelfState] = useState('none');
-    const changeCategory = useCallback((bookID, event) => {
+    const changeCategory = useCallback((bookID, shelfValue) => {
         const book = currentBooks.filter(e => e.id === bookID)[0];
-        //book.shelf = 
-        BooksAPI.update().then(res => {
+        BooksAPI.update(book, shelfValue).then(res => {
             setShelfState({
                 books: currentBooks
             })

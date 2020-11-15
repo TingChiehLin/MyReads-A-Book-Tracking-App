@@ -4,9 +4,9 @@ import './Book.scss';
 function Book(props) {
     
     // const [shelfState, setShelfState] = useState("currentlyReading");
-    const {title, author, shelf, imageUrl, onShelfChange} = props; 
+    const {key, title, author, shelf, imageUrl, onShelfChange} = props; 
 
-    return React.memo(
+    return (
         <>
             <li>
                 <div className="book">
@@ -16,9 +16,9 @@ function Book(props) {
                         <select 
                             onChange={(e)=>{ 
                                 const selectedValue = e.target.value;
-                                onShelfChange(selectedValue);
+                                onShelfChange(key, selectedValue);
                             }}
-                            // value={shelfState}
+                            value={shelf}
                         >
                             <option value="move" disabled>Move to...</option>
                             <option value="currentlyReading">Currently Reading</option>
@@ -36,7 +36,7 @@ function Book(props) {
     )
 }
 
-export default Book
+export default React.memo(Book)
 
 
 // <div className="bookshelf">
