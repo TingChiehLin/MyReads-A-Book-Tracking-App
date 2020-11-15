@@ -1,9 +1,22 @@
-import React from 'react'
+import React, {useState, useCallback} from 'react'
+import * as BooksAPI from "../BooksAPI";
 import BookShelf from '../BookShelf/BookShelf';
 import './BookList.scss';
 
 function Booklist(props) {
     const {currentBooks} = props;
+    const [shelfState, setShelfState] = useState('none');
+    const changeCategory = useCallback((bookID, event) => {
+        const book = currentBooks.filter(e => e.id === bookID)[0];
+        //book.shelf = 
+        BooksAPI.update().then(res => {
+            setShelfState({
+                books: currentBooks
+            })
+        });
+    }, [setShelfState]
+    );
+
     return (
         <>
           <div className="list-books">
@@ -14,14 +27,17 @@ function Booklist(props) {
                 <BookShelf 
                     shelfTitle="Currently Reading"
                     books={currentBooks.filter((book) => book.shelf === "currentlyReading")}
+                    onShelfChange={changeCategory}
                 />
                 <BookShelf 
                     shelfTitle="Want To Read"
                     books={currentBooks.filter((book) => book.shelf === "wantToRead")}
+                    onShelfChange={changeCategory}
                 />
                 <BookShelf 
                     shelfTitle="Read"
                     books={currentBooks.filter((book) => book.shelf === "read")}
+                    onShelfChange={changeCategory}
                 />
             </div>
           </div>  
