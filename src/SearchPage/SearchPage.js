@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { Link } from 'react-router-dom';
 import * as BooksAPI from "../BooksAPI";
-import Book from '../Book/Bookpwd';
+import Book from '../Book/Book';
 import './SearchPage.scss';
 
 const SearchPage = (props) => {
@@ -12,7 +12,7 @@ const SearchPage = (props) => {
         const hasTitle = book.toLocaleLowerCase().includes(inputValue.toLocaleLowerCase());
         const hascategory = book.category.toLocaleLowerCase().includes(inputValue.toLocaleLowerCase());
         return hasTitle && hascategory
-    }).map((book) => {
+    }).map((book) => 
         <Book
             key = {book.id}
             id = {book.id} 
@@ -22,7 +22,7 @@ const SearchPage = (props) => {
             imageUrl = {book.imageLinks.thumbnail}
             updateSheief = {updateSheief}
         />
-    });
+    );
 
     return (
         <div>
@@ -41,9 +41,7 @@ const SearchPage = (props) => {
                 </div>
                 <div className="search-books-results">
                 <ol className="books-grid">
-                    {
-                      {book}
-                    }
+                    {book}
                 </ol>
                 </div>
             </div>
