@@ -48,14 +48,17 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
-          <BookList currentBooks = {this.state.books} updateSheief={this.updateSheief} />
+        
           <SearchButton/>
+          <Route path="/" exact component= { () =>
+            <BookList currentBooks = {this.state.books} updateSheief={this.updateSheief} />
+          }/>
           <Route 
             path="/search"
-            render={() => {
-              return <SearchPage currentBooks={this.state.books} updateSheief={this.updateSheief} updateQuery={this.updateQuery}/>
-            }}
-          />
+            render={() =>
+             <SearchPage currentBooks={this.state.books} updateSheief={this.updateSheief} updateQuery={this.updateQuery}/>
+           }
+          /> 
       </div>
     );
   }

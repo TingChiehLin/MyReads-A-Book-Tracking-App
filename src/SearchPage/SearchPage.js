@@ -12,7 +12,7 @@ const SearchPage = (props) => {
         const hasTitle = book.toLocaleLowerCase().includes(inputValue.toLocaleLowerCase());
         const hascategory = book.category.toLocaleLowerCase().includes(inputValue.toLocaleLowerCase());
         return hasTitle && hascategory
-    }).map((book) => 
+    }).map(book => 
         <Book
             key = {book.id}
             id = {book.id} 
