@@ -2,7 +2,6 @@ import React from 'react'
 import * as BooksAPI from './BooksAPI'
 import {Route} from 'react-router-dom';
 import SearchPage from './SearchPage/SearchPage';
-import {Link} from 'react-router-dom';
 import './App.scss'
 
 import BookList from './BookList/Booklist';
@@ -13,7 +12,6 @@ class BooksApp extends React.Component {
   state = {
     books: []
   }
-
 
   componentDidMount() {
     this.fetchData();
@@ -37,6 +35,16 @@ class BooksApp extends React.Component {
       });
   };
 
+  updateQuery = (query) => {
+    BooksAPI.search(query).then((res) => {
+        if (query.length > 20) {
+          this.updateSheief(this.state.books);
+        } else {
+          this.setState({books:[]});
+        }
+    })
+  }
+
   render() {
     return (
       <div className="app">
@@ -45,7 +53,7 @@ class BooksApp extends React.Component {
           <Route 
             path="/search"
             render={() => {
-              <SearchPage currentBooks={this.state.books} updateSheief={this.updateSheief}/>
+              <SearchPage currentBooks={this.state.books} updateSheief={this.updateSheief} updateQuery={this.updateQuery}/>
             }}
           />
       </div>
