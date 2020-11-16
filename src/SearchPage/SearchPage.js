@@ -1,9 +1,10 @@
 import React from 'react'
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import * as BooksAPI from "../BooksAPI";
 import './SearchPage.scss';
 
-const SearchPage = () => {
-    
+const SearchPage = (props) => {
+
     return (
         <div>
             <div className="search-books">
@@ -14,7 +15,9 @@ const SearchPage = () => {
                 </div>
                 </div>
                 <div className="search-books-results">
-                <ol className="books-grid"></ol>
+                <ol className="books-grid">
+
+                </ol>
                 </div>
             </div>
         </div>

@@ -1,6 +1,7 @@
 import React from 'react'
 import * as BooksAPI from './BooksAPI'
-
+import {Route} from 'react-router-dom';
+import SearchPage from './SearchPage/SearchPage';
 import {Link} from 'react-router-dom';
 import './App.scss'
 
@@ -39,10 +40,16 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
-          <BookList currentBooks = {this.state.books} updateSheief={this.updateSheief}/>
-          <SearchButton currentBooks = {this.state.books} updateSheief={this.updateSheief}/>
+          <BookList currentBooks = {this.state.books} updateSheief={this.updateSheief} />
+          <SearchButton/>
+          <Route 
+            path="/search"
+            render={() => {
+              <SearchPage currentBooks={this.state.books} updateSheief={this.updateSheief}/>
+            }}
+          />
       </div>
-    )
+    );
   }
 }
 

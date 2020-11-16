@@ -3,16 +3,12 @@ import {Link} from 'react-router-dom';
 import './SearchButton.scss';
 import SearchIcon from '@material-ui/icons/Search'; 
 
-function SearchBar(props) {
-
-    const {currentBooks, updateSheief} = props;
+function SearchBar() {
 
     return (
         <>
           <div className="open-search">
-            <Link to="/search"
-
-            >
+            <Link to="/search">
                 <button><SearchIcon style={{color:'white'}}/></button>
             </Link>
           </div>
