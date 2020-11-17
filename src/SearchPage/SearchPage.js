@@ -9,8 +9,8 @@ const SearchPage = (props) => {
     const [inputValue, setInput] = useState('');
 
     const book = currentBooks.filter(book => {
-        const hasTitle = book.toLocaleLowerCase().includes(inputValue.toLocaleLowerCase());
-        const hascategory = book.category.toLocaleLowerCase().includes(inputValue.toLocaleLowerCase());
+        const hasTitle = book.title.toString().toLocaleLowerCase().includes(inputValue.toLocaleLowerCase());
+        const hascategory = book.categories[0].toString().toLocaleLowerCase().includes(inputValue.toLocaleLowerCase());
         return hasTitle && hascategory
     }).map(book => 
         <Book
@@ -31,8 +31,9 @@ const SearchPage = (props) => {
                 <Link to="./"><button className="close-search">Close</button></Link>
                 <div className="search-books-input-wrapper">
                     <input 
-                    onChange={
-                        updateQuery(setInput(inputValue))
+                    onChange={(e) => {
+                        updateQuery(e.target.value)
+                    }
                     }
                     value={inputValue}
                     type="text" 
