@@ -37,11 +37,8 @@ class BooksApp extends React.Component {
 
   updateQuery = (query) => {
     BooksAPI.search(query).then((res) => {
-        if (query.length > 20) {
-          this.updateSheief(this.state.books);
-        } else {
-          this.setState({books:[]});
-        }
+        this.updateSheief(this.state.books);
+        this.setState({books:[res]});
     })
   }
 
