@@ -10,8 +10,8 @@ const SearchPage = (props) => {
 
     const book = currentBooks.filter(book => {
         const hasTitle = book.title.toString().toLocaleLowerCase().includes(inputValue.toLocaleLowerCase());
-        //const hascategory = book.categories[0].toString().toLocaleLowerCase().includes(inputValue.toLocaleLowerCase());
-        //return hasTitle && hascategory
+        // const hascategory = book.categories[0].toString().toLocaleLowerCase().includes(inputValue.toLocaleLowerCase());
+        // return hasTitle && hascategory
         return hasTitle
     }).map(book => 
         <Book
@@ -47,7 +47,7 @@ const SearchPage = (props) => {
                 </div>
                 <div className="search-books-results">
                 <ol className="books-grid">
-                    {/* {book} */}
+                    {book}
                 </ol>
                 </div>
             </div>
