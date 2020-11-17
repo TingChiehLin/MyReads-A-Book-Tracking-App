@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import * as BooksAPI from "../BooksAPI";
 import Book from '../Book/Book';
@@ -6,7 +6,7 @@ import './SearchPage.scss';
 
 const SearchPage = (props) => {
     const {currentBooks, updateSheief, updateQuery} = props;
-    const [inputValue, setInput] = useState('');
+    const [inputValue, updateInput] = useState('');
 
     const book = currentBooks.filter(book => {
         const hasTitle = book.title.toString().toLocaleLowerCase().includes(inputValue.toLocaleLowerCase());
@@ -33,7 +33,11 @@ const SearchPage = (props) => {
                 <div className="search-books-input-wrapper">
                     <input 
                     onChange={(e) => {
-                        updateQuery(e.target.value)
+                        const newInputValue = e.target.value;
+                        updateInput((prevInputState) => {
+                           return prevInputState = newInputValue;
+                        })
+                        updateQuery(newInputValue);
                     }
                     }
                     value={inputValue}
