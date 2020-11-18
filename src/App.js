@@ -6,11 +6,14 @@ import './App.scss'
 
 import BookList from './BookList/Booklist';
 import SearchButton from './SearchButton/SearchButton';
+import Book from './Book/Book';
 
 class BooksApp extends React.Component {
 
   state = {
-    books: []
+    books: [],
+    allBooks: [],
+    message:''
   }
 
   componentDidMount() {
@@ -38,7 +41,14 @@ class BooksApp extends React.Component {
   updateQuery = (query) => {
     if (query == '') return
     BooksAPI.search(query).then((res) => {
-        this.setState({books:[res]});
+        console.log(res);
+        if (res.error) {
+          this.setState({books:[]});
+          console.log(res.error);
+          this.setState({message:'Can not find your books'});
+        } else {
+          this.setState({books:[res]});
+        }
     })
   }
 
@@ -53,7 +63,12 @@ class BooksApp extends React.Component {
           <Route 
             path="/search"
             render={() =>
-             <SearchPage currentBooks={this.state.books} updateSheief={this.updateSheief} updateQuery={this.updateQuery}/>
+             <SearchPage 
+              currentBooks={this.state.allBooks} 
+              updateSheief={this.updateSheief} 
+              updateQuery={this.updateQuery}
+              message={this.state.message}
+             />
            }
           /> 
       </div>

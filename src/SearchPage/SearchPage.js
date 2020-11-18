@@ -4,7 +4,7 @@ import Book from '../Book/Book';
 import './SearchPage.scss';
 
 const SearchPage = (props) => {
-    const {currentBooks, updateSheief, updateQuery} = props;
+    const {currentBooks, updateSheief, updateQuery, message} = props;
     const [inputValue, updateInput] = useState('');
 
     const onUpdateShelf = useCallback((bookID, shelfValue) => {
@@ -12,8 +12,7 @@ const SearchPage = (props) => {
         updateSheief(book, shelfValue);
     });
 
-
-    const book = currentBooks.filter(book => {
+    const oldook = currentBooks.filter(book => {
         if (!book.title || book.title === ' ') return false;
         const hasTitle = book.title.toString().toLocaleLowerCase().includes(inputValue.toLocaleLowerCase());
         //const hascategory = book.categories[0].toString().toLocaleLowerCase().includes(inputValue.toLocaleLowerCase());
@@ -31,6 +30,27 @@ const SearchPage = (props) => {
         />
     });
 
+    const book = currentBooks.length > 0 && currentBooks.map(book => 
+        <Book
+            key = {book.id}
+            id = {book.id} 
+            title = {book.title}
+            author = {book.authors}
+            shelf ={book.shelf}
+            imageUrl = {book.imageLinks.thumbnail}
+            updateSheief = {onUpdateShelf}
+        />
+    );
+
+    const handleChange = (e) => {
+        const newInputValue = e.target.value;
+        // updateInput((prevInputState) => {
+        //    return prevInputState = newInputValue;
+        // })
+        updateInput(newInputValue);
+        updateQuery(newInputValue);
+    }
+
     return (
         <div>
             <div className="search-books">
@@ -38,23 +58,17 @@ const SearchPage = (props) => {
                 <Link to="./"><button className="close-search">Close</button></Link>
                 <div className="search-books-input-wrapper">
                     <input 
-                    onChange={(e) => {
-                        const newInputValue = e.target.value;
-                        // updateInput((prevInputState) => {
-                        //    return prevInputState = newInputValue;
-                        // })
-                        updateInput(newInputValue);
-                        updateQuery(newInputValue);
-                    }
-                    }
+                    onChange = {handleChange}
                     value={inputValue}
                     type="text" 
                     placeholder="Search by title or author"/>
                 </div>
                 </div>
+                <div>{message}</div>
                 <div className="search-books-results">
                 <ol className="books-grid">
-                    {book}
+                <div style={{fontSize:24}}>{message}</div>
+                    {oldook}
                 </ol>
                 </div>
             </div>

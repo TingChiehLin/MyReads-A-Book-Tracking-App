@@ -11,7 +11,9 @@ function Book(props) {
             <li>
                 <div className="book">
                     <div className="book-top">
-                    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${imageUrl})` }}></div>
+                    <div className="book-cover" style={
+                        { width: 128, height: 193, backgroundImage: `url(${imageUrl ? imageUrl :""})`}
+                        }></div>
                     <div className="book-shelf-changer">
                         <select 
                             onChange={(e)=>{ 
@@ -29,7 +31,7 @@ function Book(props) {
                     </div>
                     </div>
                     <div className="book-title">{title}</div>
-                    <div className="book-authors">{author.map((author) => author + ' ')}</div>
+                    <div className="book-authors">{author ? author.map((author) => author + ' ') : 'Anonymous'}</div>
                 </div>
             </li>
         </>
