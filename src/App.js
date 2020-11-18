@@ -47,7 +47,7 @@ class BooksApp extends React.Component {
           console.log(res.error);
           this.setState({message:'Can not find your books'});
         } else {
-          this.setState({books:[res]});
+          this.setState({allBooks:res});
         }
     })
   }
@@ -55,7 +55,6 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
-        
           <SearchButton/>
           <Route path="/" exact component= { () =>
             <BookList currentBooks = {this.state.books} updateSheief={this.updateSheief} />

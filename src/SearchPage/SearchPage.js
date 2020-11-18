@@ -6,6 +6,7 @@ import './SearchPage.scss';
 const SearchPage = (props) => {
     const {currentBooks, updateSheief, updateQuery, message} = props;
     const [inputValue, updateInput] = useState('');
+    const [searchBook, updateSearchBook] = useState([]);
 
     const onUpdateShelf = useCallback((bookID, shelfValue) => {
         const book = currentBooks.filter(e => e.id === bookID)[0];
@@ -30,17 +31,19 @@ const SearchPage = (props) => {
         />
     });
 
-    const book = currentBooks.length > 0 && currentBooks.map(book => 
-        <Book
-            key = {book.id}
-            id = {book.id} 
-            title = {book.title}
-            author = {book.authors}
-            shelf ={book.shelf}
-            imageUrl = {book.imageLinks.thumbnail}
-            updateSheief = {onUpdateShelf}
+    const book = currentBooks.length > 0 && currentBooks.map(book => { 
+        // if (currentBooks.shelf === 'None') {
+        return  <Book
+                key = {book.id}
+                id = {book.id} 
+                title = {book.title}
+                author = {book.authors}
+                shelf ={book.shelf}
+                imageUrl = {book.imageLinks.thumbnail}
+                updateSheief = {onUpdateShelf}
         />
-    );
+        // }
+    });
 
     const handleChange = (e) => {
         const newInputValue = e.target.value;
@@ -68,7 +71,7 @@ const SearchPage = (props) => {
                 <div className="search-books-results">
                 <ol className="books-grid">
                 <div style={{fontSize:24}}>{message}</div>
-                    {oldook}
+                    {book}
                 </ol>
                 </div>
             </div>
