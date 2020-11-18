@@ -13,7 +13,8 @@ class BooksApp extends React.Component {
   state = {
     books: [],
     allBooks: [],
-    message:''
+    message:'',
+    initialshelf:'none'
   }
 
   componentDidMount() {
@@ -43,10 +44,11 @@ class BooksApp extends React.Component {
     BooksAPI.search(query).then((res) => {
         console.log(res);
         if (res.error) {
-          this.setState({books:[]});
+          this.setState({allBooks:[]});
           console.log(res.error);
           this.setState({message:'Can not find your books'});
         } else {
+          this.setState({message:''});
           this.setState({allBooks:res});
         }
     })
@@ -67,6 +69,7 @@ class BooksApp extends React.Component {
               updateSheief={this.updateSheief} 
               updateQuery={this.updateQuery}
               message={this.state.message}
+              initialshelf={this.state.initialshelf}
              />
            }
           /> 

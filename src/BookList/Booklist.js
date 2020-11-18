@@ -4,7 +4,6 @@ import './BookList.scss';
 
 function Booklist(props) {
     const {currentBooks, updateSheief} = props;
-    // const [shelfState, setShelfState] = useState('none');
     const onUpdateShelf = useCallback((bookID, shelfValue) => {
         const book = currentBooks.filter(e => e.id === bookID)[0];
         updateSheief(book, shelfValue);

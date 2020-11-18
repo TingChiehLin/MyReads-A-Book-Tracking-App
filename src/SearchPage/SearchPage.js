@@ -4,43 +4,23 @@ import Book from '../Book/Book';
 import './SearchPage.scss';
 
 const SearchPage = (props) => {
-    const {currentBooks, updateSheief, updateQuery, message} = props;
+    const {currentBooks, updateSheief, updateQuery, message, initialshelf} = props;
     const [inputValue, updateInput] = useState('');
-    const [searchBook, updateSearchBook] = useState([]);
 
     const onUpdateShelf = useCallback((bookID, shelfValue) => {
         const book = currentBooks.filter(e => e.id === bookID)[0];
         updateSheief(book, shelfValue);
     });
 
-    const oldook = currentBooks.filter(book => {
-        if (!book.title || book.title === ' ') return false;
-        const hasTitle = book.title.toString().toLocaleLowerCase().includes(inputValue.toLocaleLowerCase());
-        //const hascategory = book.categories[0].toString().toLocaleLowerCase().includes(inputValue.toLocaleLowerCase());
-        //return hasTitle && hascategory
-        return hasTitle
-    }).map(book => {
-        return <Book
-            key = {book.id}
-            id = {book.id} 
-            title = {book.title}
-            author = {book.authors}
-            shelf ={book.shelf}
-            imageUrl = {book.imageLinks.thumbnail}
-            updateSheief = {onUpdateShelf}
-        />
-    });
-
-    const book = currentBooks.length > 0 && currentBooks.map(book => { 
-        // if (currentBooks.shelf === 'None') {
+    const book = currentBooks.length > 0 && currentBooks.map(book => {
         return  <Book
-                key = {book.id}
-                id = {book.id} 
-                title = {book.title}
-                author = {book.authors}
-                shelf ={book.shelf}
-                imageUrl = {book.imageLinks.thumbnail}
-                updateSheief = {onUpdateShelf}
+                    key = {book.id}
+                    id = {book.id} 
+                    title = {book.title}
+                    author = {book.authors}
+                    shelf ={initialshelf}
+                    imageUrl = {book.imageLinks.thumbnail}
+                    updateSheief = {onUpdateShelf}
         />
         // }
     });
