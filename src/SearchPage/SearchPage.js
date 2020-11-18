@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import { Link } from 'react-router-dom';
 import Book from '../Book/Book';
 import './SearchPage.scss';
@@ -7,23 +7,29 @@ const SearchPage = (props) => {
     const {currentBooks, updateSheief, updateQuery} = props;
     const [inputValue, updateInput] = useState('');
 
+    const onUpdateShelf = useCallback((bookID, shelfValue) => {
+        const book = currentBooks.filter(e => e.id === bookID)[0];
+        updateSheief(book, shelfValue);
+    });
+
+
     const book = currentBooks.filter(book => {
         if (!book.title || book.title === ' ') return false;
         const hasTitle = book.title.toString().toLocaleLowerCase().includes(inputValue.toLocaleLowerCase());
         //const hascategory = book.categories[0].toString().toLocaleLowerCase().includes(inputValue.toLocaleLowerCase());
         //return hasTitle && hascategory
         return hasTitle
-    }).map(book => 
-        <Book
+    }).map(book => {
+        return <Book
             key = {book.id}
             id = {book.id} 
             title = {book.title}
             author = {book.authors}
             shelf ={book.shelf}
             imageUrl = {book.imageLinks.thumbnail}
-            updateSheief = {updateSheief}
+            updateSheief = {onUpdateShelf}
         />
-    );
+    });
 
     return (
         <div>

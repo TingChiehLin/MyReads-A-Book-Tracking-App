@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from 'react'
+import React, {useCallback} from 'react'
 import BookShelf from '../BookShelf/BookShelf';
 import './BookList.scss';
 
