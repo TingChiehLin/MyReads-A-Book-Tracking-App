@@ -9,10 +9,11 @@ const SearchPage = (props) => {
     const [inputValue, updateInput] = useState('');
 
     const book = currentBooks.filter(book => {
+        if (!book.title || !book.categories[0]) return false;
         const hasTitle = book.title.toString().toLocaleLowerCase().includes(inputValue.toLocaleLowerCase());
-        // const hascategory = book.categories[0].toString().toLocaleLowerCase().includes(inputValue.toLocaleLowerCase());
-        // return hasTitle && hascategory
-        return hasTitle
+        const hascategory = book.categories[0].toString().toLocaleLowerCase().includes(inputValue.toLocaleLowerCase());
+        return hasTitle && hascategory
+        // return hasTitle
     }).map(book => 
         <Book
             key = {book.id}
