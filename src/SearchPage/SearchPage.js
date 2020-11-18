@@ -8,7 +8,6 @@ const SearchPage = (props) => {
     const [inputValue, updateInput] = useState('');
 
     const book = currentBooks.filter(book => {
-        //|| !book.categories[0]
         if (!book.title || book.title === ' ') return false;
         const hasTitle = book.title.toString().toLocaleLowerCase().includes(inputValue.toLocaleLowerCase());
         //const hascategory = book.categories[0].toString().toLocaleLowerCase().includes(inputValue.toLocaleLowerCase());
@@ -35,9 +34,10 @@ const SearchPage = (props) => {
                     <input 
                     onChange={(e) => {
                         const newInputValue = e.target.value;
-                        updateInput((prevInputState) => {
-                           return prevInputState = newInputValue;
-                        })
+                        // updateInput((prevInputState) => {
+                        //    return prevInputState = newInputValue;
+                        // })
+                        updateInput(newInputValue);
                         updateQuery(newInputValue);
                     }
                     }
