@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Book.scss';
 
 function Book(props) {
     
-    // const [shelfState, setShelfState] = useState("currentlyReading");
     const {id, title, author, shelf, imageUrl, updateSheief} = props; 
 
     return (

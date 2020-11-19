@@ -6,8 +6,9 @@ import './SearchPage.scss';
 const SearchPage = (props) => {
     const {currentBooks, allBooks, updateSheief, updateQuery, message, initialshelf} = props;
     const [inputValue, updateInput] = useState('');
+    
     const onUpdateShelf = useCallback((bookID, shelfValue) => {
-        const book = currentBooks.filter((e) => e.id === bookID)[0];
+        const book = allBooks.filter((e) => e.id === bookID)[0];
         updateSheief(book, shelfValue);
     });
 
@@ -19,7 +20,7 @@ const SearchPage = (props) => {
     }
 
     const book = inputValue !='' && allBooks.length > 0 && allBooks.map(book => {
-        const imageUrl = book.imageLinks.thumbnail === undefined ? '' : book.imageLinks.thumbnail;
+        const imageUrl = book.imageLinks === undefined ? '' : book.imageLinks.thumbnail;
         return  <Book
                     key = {book.id}
                     id = {book.id} 

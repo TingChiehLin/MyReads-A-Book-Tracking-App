@@ -6,7 +6,6 @@ import './App.scss'
 
 import BookList from './BookList/Booklist';
 import SearchButton from './SearchButton/SearchButton';
-import Book from './Book/Book';
 
 class BooksApp extends React.Component {
 
