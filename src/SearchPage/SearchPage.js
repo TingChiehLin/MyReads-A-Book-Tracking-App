@@ -4,15 +4,22 @@ import Book from '../Book/Book';
 import './SearchPage.scss';
 
 const SearchPage = (props) => {
-    const {currentBooks, updateSheief, updateQuery, message, initialshelf} = props;
+    const {currentBooks, allBooks, updateSheief, updateQuery, message, initialshelf} = props;
     const [inputValue, updateInput] = useState('');
-
     const onUpdateShelf = useCallback((bookID, shelfValue) => {
-        const book = currentBooks.filter(e => e.id === bookID)[0];
+        const book = currentBooks.filter((e) => e.id === bookID)[0];
         updateSheief(book, shelfValue);
     });
 
-    const book = currentBooks.length > 0 && currentBooks.map(book => {
+    const handleChange = (e) => {
+        allBooks.concat(currentBooks);
+        const newInputValue = e.target.value;
+        updateInput(newInputValue);
+        updateQuery(newInputValue);
+    }
+
+    const book = inputValue !='' && allBooks.length > 0 && allBooks.map(book => {
+
         return  <Book
                     key = {book.id}
                     id = {book.id} 
@@ -22,23 +29,13 @@ const SearchPage = (props) => {
                     imageUrl = {book.imageLinks.thumbnail}
                     updateSheief = {onUpdateShelf}
         />
-        // }
     });
-
-    const handleChange = (e) => {
-        const newInputValue = e.target.value;
-        // updateInput((prevInputState) => {
-        //    return prevInputState = newInputValue;
-        // })
-        updateInput(newInputValue);
-        updateQuery(newInputValue);
-    }
 
     return (
         <div>
             <div className="search-books">
                 <div className="search-books-bar">
-                <Link to="./"><button className="close-search">Close</button></Link>
+                <Link to="./" className="close-search"></Link>
                 <div className="search-books-input-wrapper">
                     <input 
                     onChange = {handleChange}

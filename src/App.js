@@ -40,10 +40,10 @@ class BooksApp extends React.Component {
   };
 
   updateQuery = (query) => {
-    if (query == '') return
     BooksAPI.search(query).then((res) => {
         console.log(res);
-        if (res.error) {
+        if(query === '') this.setState({allBooks:[]});
+        else if (res.error) {
           this.setState({allBooks:[]});
           console.log(res.error);
           this.setState({message:'Can not find your books'});
@@ -57,15 +57,19 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
-          <SearchButton/>
-          <Route path="/" exact component= { () =>
-            <BookList currentBooks = {this.state.books} updateSheief={this.updateSheief} />
-          }/>
+          <Route path="/" exact component= { () => {
+            return <>
+              <BookList currentBooks = {this.state.books} updateSheief={this.updateSheief} />
+              <SearchButton/>
+            </>
+          }}
+          />
           <Route 
             path="/search"
             render={() =>
              <SearchPage 
-              currentBooks={this.state.allBooks} 
+              currentBooks={this.state.books}
+              allBooks={this.state.allBooks}
               updateSheief={this.updateSheief} 
               updateQuery={this.updateQuery}
               message={this.state.message}
