@@ -13,7 +13,7 @@ function Book(props) {
                     <div className="book-top">
                     <div className="book-cover" style={
                         { width: 128, height: 193, 
-                          backgroundImage: `url(${imageUrl ? imageUrl : 'ss'})`}
+                          backgroundImage: `url(${imageUrl})`}
                         }></div>
                     <div className="book-shelf-changer">
                         <select 

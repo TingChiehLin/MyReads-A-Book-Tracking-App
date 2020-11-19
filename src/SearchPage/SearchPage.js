@@ -19,14 +19,14 @@ const SearchPage = (props) => {
     }
 
     const book = inputValue !='' && allBooks.length > 0 && allBooks.map(book => {
-
+        const imageUrl = book.imageLinks.thumbnail === undefined ? '' : book.imageLinks.thumbnail;
         return  <Book
                     key = {book.id}
                     id = {book.id} 
                     title = {book.title}
                     author = {book.authors}
                     shelf ={initialshelf}
-                    imageUrl = {book.imageLinks.thumbnail}
+                    imageUrl = {imageUrl}
                     updateSheief = {onUpdateShelf}
         />
     });

@@ -34,16 +34,15 @@ class BooksApp extends React.Component {
   updateSheief = (book, shelf) => {
     BooksAPI.update(book, shelf)
       .then((res) => {
-        console.log('book', book, 'shelf', shelf);
         this.fetchData();
       });
   };
 
   updateQuery = (query) => {
+    if(query === '') return
     BooksAPI.search(query).then((res) => {
         console.log(res);
-        if(query === '') this.setState({allBooks:[]});
-        else if (res.error) {
+        if (res.error) {
           this.setState({allBooks:[]});
           console.log(res.error);
           this.setState({message:'Can not find your books'});
