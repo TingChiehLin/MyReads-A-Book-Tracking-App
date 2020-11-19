@@ -19,17 +19,18 @@ const SearchPage = (props) => {
         updateQuery(newInputValue);
     }
 
-    const book = inputValue !='' && allBooks.length > 0 && allBooks.map(book => {
+    const book = inputValue !=='' && allBooks.length > 0 && allBooks.map(book => {
         const imageUrl = book.imageLinks === undefined ? '' : book.imageLinks.thumbnail;
+        const shelfStatue = currentBooks.find(e => e.shelf === allBooks.shelf) ? book.shelf : initialshelf;
         return  <Book
-                    key = {book.id}
-                    id = {book.id} 
-                    title = {book.title}
-                    author = {book.authors}
-                    shelf ={initialshelf}
-                    imageUrl = {imageUrl}
-                    updateSheief = {onUpdateShelf}
-        />
+                key = {book.id}
+                id = {book.id} 
+                title = {book.title}
+                author = {book.authors}
+                shelf ={shelfStatue}
+                imageUrl = {imageUrl}
+                updateSheief = {onUpdateShelf}
+            />
     });
 
     return (
