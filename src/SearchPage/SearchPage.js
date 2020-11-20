@@ -21,13 +21,13 @@ const SearchPage = (props) => {
 
     const book = inputValue !=='' && allBooks.length > 0 && allBooks.map(book => {
         const imageUrl = book.imageLinks === undefined ? '' : book.imageLinks.thumbnail;
-        const shelfStatue = currentBooks.find(e => e.shelf === allBooks.shelf) ? book.shelf : initialshelf;
+        const shelfBook = currentBooks.find(e => e.id === book.id); 
         return  <Book
                 key = {book.id}
                 id = {book.id} 
                 title = {book.title}
                 author = {book.authors}
-                shelf ={shelfStatue}
+                shelf ={shelfBook ? shelfBook.shelf : initialshelf}
                 imageUrl = {imageUrl}
                 updateSheief = {onUpdateShelf}
             />
