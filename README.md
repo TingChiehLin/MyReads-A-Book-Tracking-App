@@ -18,7 +18,7 @@ Using [Create React App](https://github.com/facebookincubator/create-react-app) 
 
 ## Backend Server for API Use
 
-To simplify your development process, we've provided a backend server for you to develop against. The provided file [`BooksAPI.js`](src/BooksAPI.js) contains the methods you will need to perform necessary operations on the backend:
+ The provided file [`BooksAPI.js`](src/BooksAPI.js) contains the methods you will need to perform necessary operations on the backend:
 
 * [`getAll`](#getall)
 * [`update`](#update)
@@ -61,9 +61,15 @@ search(query)
 
 ## Result
 
+#### Home
+
+### Arrange Category
+
+### Search Books
+
 
 ## Link
-[MyReads App]()
+[MyReads App](https://vercel.com/cooloojayoo/myread/rfeeenpdf)
 
 ## License
 
