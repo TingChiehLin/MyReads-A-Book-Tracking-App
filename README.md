@@ -72,7 +72,7 @@ search(query)
 
 
 ## Link
-[MyReads App](https://vercel.com/cooloojayoo/myread/rfeeenpdf)
+[MyReads App](https://myread-rfeeenpdf.vercel.app/)
 
 ## License
 
